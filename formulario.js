@@ -1,26 +1,27 @@
-var formulario = document.querySelector("#form")
+// se cambia la referencia a la que llama el query selector de #form a .form para que sea valida
+var formulario = document.querySelector(".form")
+//se cambia variable e para que sea mas significativa a event
+formulario.onsubmit = function(event) {
+// se cambia prevent por prevent default
+  event.preventDefault();
+  //se cambian nombres de variables de una letra por otros mas significativos
+  var addElemento1 = formulario.elements[0]
+  var addElemento2 = formulario.elements[1]
+  var addElemento3 = formulario.elements[2]
 
-formulario.onsubmit = function(e) {
+  var nombre = addElemento1.value
+  var edad = addElemento2.value
 
-  e.prevent();
-  
-  var n = formulario.elements[0]
-  var e = formulario.elements[1]
-  var na = formulario.elements[2]
-
-  var nombre = n.value
-  var edad = e.value
-
-  var i = na.selectedIndex
-  var nacionalidad = na.options[i].value
+  var i = addElemento3.selectedIndex
+  var nacionalidad = addElemento3.options[i].value
   console.log(nombre, edad)
   console.log(nacionalidad)
 
   if (nombre.length === 0) {
-    n.classList.add("error")
+    addElemento1.classList.add("error")
   }
   if (edad < 18 || edad > 120) {
-    e.classList.add("error")
+    addElemento2.classList.add("error")
   }
 
 if (nombre.length > 0 
